@@ -1,0 +1,54 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://asset/capitan/09-Idle Sword/03.png" type="Texture" id=1]
+[ext_resource path="res://asset/capitan/09-Idle Sword/05.png" type="Texture" id=2]
+[ext_resource path="res://asset/capitan/11-Jump Sword/02.png" type="Texture" id=3]
+[ext_resource path="res://asset/capitan/09-Idle Sword/01.png" type="Texture" id=4]
+[ext_resource path="res://asset/capitan/09-Idle Sword/04.png" type="Texture" id=5]
+[ext_resource path="res://asset/capitan/11-Jump Sword/03.png" type="Texture" id=6]
+[ext_resource path="res://asset/capitan/09-Idle Sword/02.png" type="Texture" id=7]
+[ext_resource path="res://asset/capitan/11-Jump Sword/01.png" type="Texture" id=8]
+[ext_resource path="res://asset/capitan/10-Run Sword/05.png" type="Texture" id=9]
+[ext_resource path="res://asset/capitan/10-Run Sword/02.png" type="Texture" id=10]
+[ext_resource path="res://asset/capitan/10-Run Sword/03.png" type="Texture" id=11]
+[ext_resource path="res://asset/capitan/10-Run Sword/01.png" type="Texture" id=12]
+[ext_resource path="res://asset/capitan/10-Run Sword/06.png" type="Texture" id=13]
+[ext_resource path="res://asset/capitan/10-Run Sword/04.png" type="Texture" id=14]
+[ext_resource path="res://asset/sound/jump.mp3" type="AudioStream" id=15]
+[ext_resource path="res://scripts/player.gd" type="Script" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 8.0
+height = 6.0
+
+[node name="player" type="KinematicBody2D" groups=["player"]]
+script = ExtResource( 16 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="BGPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -10.0

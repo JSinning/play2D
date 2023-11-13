@@ -1,0 +1,137 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://asset/backgraund/plx-1.png" type="Texture" id=1]
+[ext_resource path="res://asset/backgraund/plx-4.png" type="Texture" id=2]
+[ext_resource path="res://asset/backgraund/plx-3.png" type="Texture" id=3]
+[ext_resource path="res://asset/backgraund/plx-2.png" type="Texture" id=4]
+[ext_resource path="res://asset/backgraund/plx-5.png" type="Texture" id=5]
+[ext_resource path="res://asset/sound/nature036.mp3" type="AudioStream" id=6]
+[ext_resource path="res://asset/fonts/JurassicPark-BL48.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://asset/fonts/TitelFonsts.tres" type="DynamicFont" id=8]
+[ext_resource path="res://asset/fonts/ButtonFonts.tres" type="DynamicFont" id=9]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+outline_size = 4
+extra_spacing_char = 6
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 65
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 9
+font_data = ExtResource( 7 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="BGplayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Background2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background2"]
+
+[node name="Sprite" type="Sprite" parent="Background2/ParallaxLayer"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Background3" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background3"]
+
+[node name="Sprite" type="Sprite" parent="Background3/ParallaxLayer"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Background4" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background4"]
+
+[node name="Sprite" type="Sprite" parent="Background4/ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Background5" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background5"]
+
+[node name="Sprite" type="Sprite" parent="Background5/ParallaxLayer"]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Titels" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -134.0
+margin_top = -39.0
+margin_right = 134.0
+margin_bottom = -39.0
+alignment = 1
+
+[node name="Autor" type="Label" parent="Titels"]
+margin_top = 64.0
+margin_right = 268.0
+margin_bottom = 101.0
+custom_colors/font_color = Color( 0.027451, 0.329412, 0.0392157, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "JUANDAS"
+align = 1
+
+[node name="Title" type="Label" parent="Titels"]
+margin_top = 105.0
+margin_right = 268.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( -294, -45 )
+custom_colors/font_color = Color( 0.027451, 0.329412, 0.0392157, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Jugle Game "
+align = 1
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -107.0
+margin_bottom = -2.0
+alignment = 1
+
+[node name="start" type="Button" parent="Buttons"]
+margin_right = 384.0
+margin_bottom = 52.0
+custom_colors/font_color_disabled = Color( 0.027451, 0.329412, 0.0392157, 1 )
+custom_colors/font_color_hover = Color( 0.0235294, 0.717647, 0.278431, 1 )
+custom_fonts/font = ExtResource( 9 )
+keep_pressed_outside = true
+text = "Start"
+flat = true
+icon_align = 1
+
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 56.0
+margin_right = 384.0
+margin_bottom = 105.0
+custom_colors/font_color_disabled = Color( 0.027451, 0.329412, 0.0392157, 1 )
+custom_colors/font_color_hover = Color( 0.752941, 0.0901961, 0.0901961, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="Buttons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
